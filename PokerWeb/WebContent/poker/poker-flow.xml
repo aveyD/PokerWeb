@@ -4,19 +4,24 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-	<on-start>
-		<evaluate expression="pokerController.initBean()" result="flowScope.bean" />
-	</on-start>
-<!-- 	<var name="bean" class="poker.Bean" /> -->
+<!-- 	<on-start> -->
+<!-- 		<evaluate expression="pokerController.initBean()" result="flowScope.bean" /> -->
+<!-- 	</on-start> -->
+	<var name="bean" class="poker.Bean" />
 
 	<view-state id="poker" model="bean">
 		<transition on="deal" to="deal" />
+		<transition on="alert" to="alert" />
 	</view-state>
 	
 	<action-state id="deal">
 		<evaluate expression="pokerController.dealPoker(bean)" />
 		<transition on="yes" to="poker" />
 		<transition on="no" to="poker" />
+	</action-state>
+
+	<action-state id="alert">
+		<evaluate expression="pokerController.alert()" />
 	</action-state>
 
 </flow>

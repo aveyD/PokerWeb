@@ -38,6 +38,6 @@
 	</bean>
 	
 	<import resource="webflow-context.xml"/>
-	<import resource="spring-mvc-config.xml"/>
+	<import resource="spring-mvc-servlet.xml"/>
 
 </beans>

@@ -20,11 +20,17 @@
 		<h:outputLabel value="(2-10)" />
 
 		<br/>
-		<p:commandButton value="Deal" id="deal" action="deal" update="players" />
+		<p:commandButton value="Deal" id="deal" action="deal" update="players" ajax="false" />
 <ui:remove>
 actionListener="#{pokerController.initBean}"
+actionListener="#{pokerController.alert}"
+action="alert"
 ajax="false"
 </ui:remove>
+
+		
+		<h:commandButton value="Alert" id="alert" actionListener="#{pokerController.alert}" />
+
 		
 		<p:dataTable id="players" var="player" rendered="#{!empty bean.players}" value="#{bean.players}" 
 			tableStyle="width:auto" style="margin: 10px 0px;">
