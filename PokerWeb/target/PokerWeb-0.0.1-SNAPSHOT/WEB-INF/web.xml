@@ -5,16 +5,25 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>PokerWeb</display-name>
 	<welcome-file-list>
-		<welcome-file>faces/index.xhtml</welcome-file>
+		<welcome-file>poker/index.xhtml</welcome-file>
 		<welcome-file>index.xhtml</welcome-file>
-		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+	<servlet>
+      <servlet-name>PokerWeb</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <load-on-startup>2</load-on-startup>
+   </servlet>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
+      <servlet-name>PokerWeb</servlet-name>
+      <url-pattern>/</url-pattern>
+      <url-pattern>/poker/*</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>

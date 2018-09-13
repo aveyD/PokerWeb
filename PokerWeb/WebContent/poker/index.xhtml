@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Poker</h1>
+
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		
+		<h:outputLabel for="numPlayers" value="Number of Players:" />
+		<p:inputText id="numPlayers" size="3" style="margin: 0px 10px;" />
+		<h:outputLabel value="(2-10)" />
+
+		<br/>
+		<p:commandButton value="Deal" id="deal" action="deal" ajax="false" />
+		
+		<p:dataTable var="player" rendered="#{!empty bean.players}" value="#{bean.players}" 
+			tableStyle="width:auto" style="margin: 10px 0px;">
+			<p:column headerText="Name">
+				<h:outputText value="#{player.name}" />
+			</p:column>
+			<p:column headerText="Hand">
+				<h:outputText value="#{player.cards}" />
+			</p:column>
+		</p:dataTable>
+		
+	</h:form>
+
+</h:body>
+</html>
