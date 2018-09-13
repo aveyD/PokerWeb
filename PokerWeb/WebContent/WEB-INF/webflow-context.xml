@@ -20,16 +20,34 @@
 
 	<!-- The registry of executable flow definitions -->
 	<webflow:flow-registry id="flowRegistry"
-		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
+		flow-builder-services="flowBuilderServices" base-path="/">
 		<webflow:flow-location-pattern
 			value="**/*-flow.xml" />
 	</webflow:flow-registry>
 
 	<!-- Configures the Spring Web Flow JSF integration -->
 	<faces:flow-builder-services
-		id="flowBuilderServices" />
+		id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+
+	<bean id="mvcViewFactoryCreator"
+		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+	</bean>
 
 	<!-- A listener maintain one FacesContext instance per Web Flow request. -->
 	<bean id="facesContextListener"
 		class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener" />
+
+	<!-- Enables FlowHandler URL mapping -->
+	<bean
+		class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+
+	<!-- Maps request paths to flows in the flowRegistry; e.g. a path of /hotels/booking 
+		looks for a flow with id "hotels/booking" -->
+	<bean
+		class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="order" value="0" />
+	</bean>
 </beans>

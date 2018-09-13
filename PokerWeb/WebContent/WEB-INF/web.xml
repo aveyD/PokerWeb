@@ -13,13 +13,6 @@
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
-	<!-- <servlet> -->
-	<!-- <servlet-name>Spring Servlet</servlet-name> -->
-	<!-- <servlet-class>org.springframework.web.context.support.HttpRequestHandlerServlet</servlet-class> -->
-	<!-- <load-on-startup>1</load-on-startup> -->
-	<!-- </servlet> -->
-
 	<servlet>
 		<servlet-name>Spring MVC Servlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -29,11 +22,20 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<!-- Serves static resource content from .jar files such as spring-js.jar -->
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>Resource Servlet</servlet-name> -->
+<!-- 		<servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class> -->
+<!-- 	</servlet> -->
+
+	<!-- Map all /resources requests to the Resource Servlet for handling -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>Resource Servlet</servlet-name> -->
+<!-- 		<url-pattern>/resources/*</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	<servlet-mapping>
 		<servlet-name>Spring MVC Servlet</servlet-name>
 		<url-pattern>/</url-pattern>
-		<url-pattern>/poker</url-pattern>
-		<url-pattern>/poker/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -53,17 +55,17 @@
 	</servlet-mapping>
 
 	<!-- Use JSF view templates saved as *.xhtml, for use with Facelets -->
-	<context-param>
-		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-		<param-value>.xhtml</param-value>
-	</context-param>
+	<!-- <context-param> -->
+	<!-- <param-name>javax.faces.DEFAULT_SUFFIX</param-name> -->
+	<!-- <param-value>.xhtml</param-value> -->
+	<!-- </context-param> -->
 
 	<!-- <context-param> -->
 	<!-- <param-name>contextConfigLocation</param-name> -->
 	<!-- <param-value>/WEB-INF/spring-context.xml</param-value> -->
 	<!-- </context-param> -->
 
-<!-- 	<listener> -->
-<!-- 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
-<!-- 	</listener> -->
+	<!-- <listener> -->
+	<!-- <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+	<!-- </listener> -->
 </web-app>

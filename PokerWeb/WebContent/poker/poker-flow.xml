@@ -2,13 +2,12 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
-                          http://www.springframework.org/schema/webflow/spring-webflow.xsd"
-      start-state="poker">
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-<!-- 	<on-start> -->
-<!-- 		<evaluate expression="pokerController.initBean()" result="flowScope.bean" /> -->
-<!-- 	</on-start> -->
-	<var name="bean" class="poker.Bean" />
+	<on-start>
+		<evaluate expression="pokerController.initBean()" result="flowScope.bean" />
+	</on-start>
+<!-- 	<var name="bean" class="poker.Bean" /> -->
 
 	<view-state id="poker" model="bean">
 		<transition on="deal" to="deal" />

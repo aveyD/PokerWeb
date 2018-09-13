@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xmlns:faces="http://www.springframework.org/schema/faces"
-		 xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:faces="http://www.springframework.org/schema/faces"
+	xsi:schemaLocation="
 			 http://www.springframework.org/schema/beans
 			 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 			 http://www.springframework.org/schema/faces
@@ -10,8 +10,15 @@
 
 	<faces:resources />
 
-	<bean class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
+	<bean
+		class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>
+
+<!-- 	<bean id="tilesViewResolver" -->
+<!-- 		class="org.springframework.js.ajax.AjaxUrlBasedViewResolver"> -->
+<!-- 		<property name="viewClass" -->
+<!-- 			value="org.springframework.webflow.mvc.view.FlowAjaxTilesView" /> -->
+<!-- 	</bean> -->
 
 </beans>

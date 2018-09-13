@@ -32,7 +32,7 @@ public class PokerController {
 
 	public void dealPoker(Bean bean) {
 		addMessage("You are about to deal!!!");
-		PokerService.runPoker(bean);
+		getPokerService().runPoker(bean);
 	}
 
 	public PokerService getPokerService() {

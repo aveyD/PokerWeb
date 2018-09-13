@@ -125,7 +125,7 @@ public class PokerService {
 		return new ArrayList<Card>(playerCards);
 	}
 
-	public static void runPoker(Bean bean) {
+	public void runPoker(Bean bean) {
 		PokerUtil.run(bean);
 	}
 }
