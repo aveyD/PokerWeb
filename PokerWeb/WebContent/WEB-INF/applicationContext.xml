@@ -11,33 +11,6 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="poker" />
-
-	<mvc:annotation-driven />
-	
-	<mvc:resources mapping="/resources/**" location="/, classpath:/META-INF/web-resources/" />
-
-	<mvc:default-servlet-handler />
-
-	<!-- <bean -->
-	<!-- class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" 
-		/> -->
-
-	<!-- <bean id="viewResolver" -->
-	<!-- class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
-	<!-- <property name="viewClass" -->
-	<!-- value="org.springframework.web.servlet.view.JstlView" /> -->
-	<!-- <property name="prefix" value="/" /> -->
-	<!-- <property name="suffix" value=".xhtml" /> -->
-	<!-- </bean> -->
-
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/" />
-		<property name="suffix" value=".xhtml" />
-	</bean>
-	
-	<import resource="webflow-context.xml"/>
 	<import resource="spring-mvc-servlet.xml"/>
 
 </beans>

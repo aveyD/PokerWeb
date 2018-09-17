@@ -5,11 +5,13 @@
 	xmlns:faces="http://www.springframework.org/schema/faces"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/webflow-config
-		http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd
+		http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd
 		http://www.springframework.org/schema/faces
-		http://www.springframework.org/schema/faces/spring-faces-2.4.xsd">
+		http://www.springframework.org/schema/faces/spring-faces.xsd">
+
+	<faces:resources />
 
 	<!-- Executes flows: the central entry point into the Spring Web Flow system -->
 	<webflow:flow-executor id="flowExecutor">
@@ -51,4 +53,10 @@
 		<property name="flowRegistry" ref="flowRegistry" />
 		<property name="order" value="0" />
 	</bean>
+
+	<bean
+		class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+	
 </beans>

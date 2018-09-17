@@ -22,6 +22,7 @@
 		<br/>
 		<p:commandButton value="Deal" id="deal" action="deal" update="players" ajax="false" />
 <ui:remove>
+value="#{bean.numPlayers}"
 actionListener="#{pokerController.initBean}"
 actionListener="#{pokerController.alert}"
 action="alert"
