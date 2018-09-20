@@ -13,19 +13,18 @@
 	<h1>Poker</h1>
 
 	<h:form>
-		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:growl id="growl" />
 		
 		<h:outputLabel for="numPlayers" value="Number of Players:" />
-		<p:inputText id="numPlayers" size="3" style="margin: 0px 10px;" />
+		<p:inputText id="numPlayers" size="3" style="margin: 0px 10px;" binding="#{numPlayers}" />
 		<h:outputLabel value="(2-10)" />
 
 		<br/>
 <ui:remove>
 		<p:commandButton value="Deal" id="deal" action="deal" update="players" ajax="false" />
-</ui:remove>
 		<h:commandButton value="Init Bean" id="initBean" actionListener="#{pokerController.initBean}" />
-		
-		<h:commandButton value="Deal" id="dealOld" actionListener="#{pokerController.dealPoker}" update="players winner" />
+</ui:remove>		
+		<h:commandButton value="Deal" id="dealOld" actionListener="#{pokerController.dealPoker(numPlayers.value)}" update="players winner" />
 <ui:remove>
 		<h:commandButton value="Alert" id="alert" actionListener="#{pokerController.alert}" />
 </ui:remove>

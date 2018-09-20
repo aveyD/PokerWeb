@@ -28,7 +28,25 @@ public class PokerController {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
-	public void dealPoker() {
+	public void dealPoker(String value) {
+		if (value == null) {
+			addMessage("Please enter number of players.");
+		} else {
+			int numPlayers = 6;
+			try {
+				numPlayers = Integer.parseInt(value);
+			} catch (NumberFormatException e) {
+				addMessage("Default number of players set to 6.");
+			}
+			if (numPlayers <= 1 || numPlayers > 10) {
+				addMessage("Invalid number of players. Must be between 2-10");
+			}
+			dealPoker(numPlayers);
+		}
+	}
+	
+	public void dealPoker(int numPlayers) {
+		bean.setNumPlayers(numPlayers);
 		dealPoker(bean);
 	}
 
