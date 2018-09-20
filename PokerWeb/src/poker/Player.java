@@ -7,6 +7,7 @@ public class Player {
 	private String name;
 	private List<Card> cards;
 	private List<Card> flopTurnRiver;
+	private List<Card> holeCards;
 	private List<PokerHand> allPossibleHoldemHands;
 	private PokerHandRank pokerHandRank;
 	private Rank highPair;
@@ -18,6 +19,7 @@ public class Player {
 	public Player(int playerNum) {
 		this.setName("Player " + playerNum);
 		this.setCards(new ArrayList<Card>());
+		this.setHoleCards(new ArrayList<Card>());
 		this.setFlopTurnRiver(new ArrayList<Card>());
 		this.setAllPossibleHoldemHands(new ArrayList<PokerHand>());
 	}
@@ -80,6 +82,14 @@ public class Player {
 
 	public void setFlopTurnRiver(List<Card> flopTurnRiver) {
 		this.flopTurnRiver = flopTurnRiver;
+	}
+
+	public List<Card> getHoleCards() {
+		return holeCards;
+	}
+
+	public void setHoleCards(List<Card> holeCards) {
+		this.holeCards = holeCards;
 	}
 
 	@Override

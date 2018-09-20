@@ -105,6 +105,9 @@ public class Dealer {
 			Player player = players.get(playerNum);
 			if (player.getCards().size() < handSize) {
 				player.getCards().add(deck.get(card));
+				if (handSize == 2) {
+					player.getHoleCards().add(deck.get(card));
+				}
 			} else {
 				if (flopTurnRiver) {
 					getFlopTurnRiver().add(deck.get(card));
