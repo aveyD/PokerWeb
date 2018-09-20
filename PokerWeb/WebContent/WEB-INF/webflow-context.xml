@@ -24,7 +24,7 @@
 	<webflow:flow-registry id="flowRegistry"
 		flow-builder-services="flowBuilderServices" base-path="/">
 		<webflow:flow-location-pattern
-			value="**/*-flow.xml" />
+			value="/**/*-flow.xml" />
 <!-- 		<webflow:flow-location path="/poker/poker-flow.xml" /> -->
 	</webflow:flow-registry>
 

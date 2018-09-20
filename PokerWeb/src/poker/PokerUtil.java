@@ -52,6 +52,7 @@ public class PokerUtil extends PokerService {
 			// if any other player has a hand that ties the best hand we have multiple
 			// winners. These are the player(s) with the best hand
 			List<Player> playersWithBestHand = new ArrayList<Player>();
+			bean.setWinners(new ArrayList<Player>());
 			for (Player player : players) {
 				PokerHand pokerHand = new PokerHand(player.getCards());
 
@@ -61,6 +62,7 @@ public class PokerUtil extends PokerService {
 				if (PokerService.compareTo(pokerHand, bestPokerHand) == 0) {
 					playersWithBestHand.add(player);
 					player.setWinner(true);
+					bean.getWinners().add(player);
 				}
 			}
 
@@ -255,6 +257,9 @@ public class PokerUtil extends PokerService {
 		for (Player player : players) {
 			if (texasHoldem) {
 				initAllPossibleHoldemHands(player);
+				if (bean.getFlopTurnRiver() == null) {
+					bean.setFlopTurnRiver(player.getFlopTurnRiver());
+				}
 				List<PokerHand> bestHands = determineBestHand(player.getAllPossibleHoldemHands());
 				if (bestHands.size() > 1) {
 					System.out

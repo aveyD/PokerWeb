@@ -20,20 +20,30 @@
 		<h:outputLabel value="(2-10)" />
 
 		<br/>
-		<p:commandButton value="Deal" id="deal" action="deal" update="players" ajax="false" />
 <ui:remove>
-value="#{bean.numPlayers}"
-actionListener="#{pokerController.initBean}"
-actionListener="#{pokerController.alert}"
-action="alert"
-ajax="false"
+		<p:commandButton value="Deal" id="deal" action="deal" update="players" ajax="false" />
 </ui:remove>
-
+		<h:commandButton value="Init Bean" id="initBean" actionListener="#{pokerController.initBean}" />
 		
+		<h:commandButton value="Deal" id="dealOld" actionListener="#{pokerController.dealPoker}" update="players winner" />
+<ui:remove>
 		<h:commandButton value="Alert" id="alert" actionListener="#{pokerController.alert}" />
-
+</ui:remove>
 		
-		<p:dataTable id="players" var="player" rendered="#{!empty bean.players}" value="#{bean.players}" 
+		<br/><br/>
+		<p:outputLabel value="Flop/Turn/River:" for="flopTurnRiver" />
+		<br/>
+		<ui:repeat id="flopTurnRiver" var="card"
+			rendered="#{pokerController.bean.flopTurnRiver != null and pokerController.bean.flopTurnRiver.size() > 0}" 
+			value="#{pokerController.bean.flopTurnRiver}"
+			tableStyle="width:auto" style="margin: 10px 0px;">
+			<p:graphicImage name="/images/#{card.str}.png" height="80px" width="60px" />
+		</ui:repeat>
+		
+		
+		<p:dataTable id="players" var="player"
+			rendered="#{pokerController.bean.players != null and pokerController.bean.players.size() > 0}" 
+			value="#{pokerController.bean.players}" 
 			tableStyle="width:auto" style="margin: 10px 0px;">
 			<p:column headerText="Name">
 				<h:outputText value="#{player.name}" />
@@ -41,7 +51,21 @@ ajax="false"
 			<p:column headerText="Hand">
 				<h:outputText value="#{player.cards}" />
 			</p:column>
+			<p:column headerText="Hand">
+				<ui:repeat var="card" value="#{player.cards}">
+					<p:graphicImage name="/images/#{card.str}.png" height="80px" width="60px" />
+				</ui:repeat>
+			</p:column>
+			<p:column headerText="Hand Rank">
+				<h:outputText value="#{player.pokerHandRank}" />
+			</p:column>
+			<p:column headerText="Winner">
+				<h:outputText rendered="#{player.winner}" value="#{player.winner ? 'Winner' : ''}" />
+			</p:column>
 		</p:dataTable>
+		
+		<h:outputText id="winner" rendered="#{pokerController.bean.winners != null and pokerController.bean.winners.size() > 0}" 
+			value="#{pokerController.bean.winners != null and pokerController.bean.winners.size() > 1 ? 'And the winners are' : 'And the winner is'}#{pokerController.bean.winners}" />
 		
 	</h:form>
 
